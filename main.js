@@ -10,19 +10,30 @@ axios
         // handle success
 
         for (post of posts) {
+            // Let Author details
+            let author = post.author;
+
+            // console.log(author.profile_image);
+
             console.log(post);
             let postContent = `
             <div class="card mt-4 w-100 shadow" style="width: 18rem;">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
-                    <img src="imgs/1.png" alt="User-Name-Photo" class="user-photo border border-light-subtle border-2">
-                    <h6>Moomen</h6>
+                    <img src="${
+                        "imgs/1.png" || author.profile_image
+                    }" alt="User-Photo" class="user-photo border border-light-subtle border-2">
+                    <h6>${author.username}</h6>
                 </section>
                 <section class="p-3">
                     <img src="./imgs/1.jpeg" class="card-img-top rounded-bottom" alt="Post-Image">
                     <div>
-                        <p class="fs-6 text-body-tertiary">${post.created_at}</p>
+                        <p class="fs-6 text-body-tertiary">${
+                            post.created_at
+                        }</p>
                         <h5 class="card-title">${post.title}</h5>
-                        <p class="card-text pb-2 border-bottom border-2">${post.body}</p>
+                        <p class="card-text pb-2 border-bottom border-2">${
+                            post.body
+                        }</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pen" viewBox="0 0 16 16">
                             <path
