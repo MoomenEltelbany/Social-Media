@@ -48,3 +48,6 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
         postContainer.innerHTML += postContent;
     }
 });
+
+const loginBtn = document.querySelector("#login-btn");
+const registerBtn = document.querySelector("#register-btn");
