@@ -49,5 +49,13 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
     }
 });
 
+/*
+Todo tomorrow:
+    ==> Get the username and password
+    ==> Check if they have a token
+    ==> Save the token in the localStorage
+    ==> Close the modal
+*/
+
 const loginBtn = document.querySelector("#login-btn");
 const registerBtn = document.querySelector("#register-btn");
