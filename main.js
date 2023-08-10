@@ -55,12 +55,17 @@ Todo tomorrow:
     ==> Close the modal
 */
 
-const loginBtn = document.querySelector("#login-btn");
-const registerBtn = document.querySelector("#register-btn");
+// Capturing the email and password inputs
 const emailInput = document.querySelector("#recipient-name");
 const passwordInput = document.querySelector("#recipient-password");
+
+// Declaring the token variable globally
 let token = ``;
 
+// Creating an instance of the modal through the bootstrap.Modal class
+const myModal = new bootstrap.Modal("#loginModal");
+
+// Function that will be invoked once the client hits the submit btn in the login form
 function loginUser() {
     let params = {
         username: emailInput.value,
@@ -70,11 +75,13 @@ function loginUser() {
     axios
         .post(`${baseURL}/login`, params)
         .then((response) => {
+            // Positive request and saving the data in the Local Storage
             token = response.data.token;
             localStorage.setItem("user", JSON.stringify(params));
             localStorage.setItem("token", token);
-            console.log(token);
-            console.log(params);
+
+            // Closing the modal
+            myModal.hide();
         })
         .catch((error) => console.log(error));
 }
