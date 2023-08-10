@@ -15,9 +15,7 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
         // Let Author details
         let author = post.author;
 
-        // console.log(author.profile_image);
-
-        console.log(post);
+        // console.log(post);
         let postContent = `
             <div class="card mt-4 w-100 shadow" style="width: 18rem;">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
@@ -59,3 +57,24 @@ Todo tomorrow:
 
 const loginBtn = document.querySelector("#login-btn");
 const registerBtn = document.querySelector("#register-btn");
+const emailInput = document.querySelector("#recipient-name");
+const passwordInput = document.querySelector("#recipient-password");
+let token = ``;
+
+function loginUser() {
+    let params = {
+        username: emailInput.value,
+        password: passwordInput.value,
+    };
+
+    axios
+        .post(`${baseURL}/login`, params)
+        .then((response) => {
+            token = response.data.token;
+            localStorage.setItem("user", JSON.stringify(params));
+            localStorage.setItem("token", token);
+            console.log(token);
+            console.log(params);
+        })
+        .catch((error) => console.log(error));
+}
