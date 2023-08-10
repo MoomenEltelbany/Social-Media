@@ -82,6 +82,32 @@ function loginUser() {
 
             // Closing the modal
             myModal.hide();
+
+            showSuccessAlert();
         })
         .catch((error) => console.log(error));
+}
+
+function showSuccessAlert() {
+    const showSuccessPlaceholder = document.getElementById(
+        "showSuccessPlaceholder"
+    );
+    const appendAlert = (message, type) => {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            "</div>",
+        ].join("");
+
+        showSuccessPlaceholder.append(wrapper);
+    };
+
+    const alertTrigger = document.querySelector(".submit-login");
+    if (alertTrigger) {
+        alertTrigger.addEventListener("click", () => {
+            appendAlert("Nice, you triggered this alert message!", "success");
+        });
+    }
 }
