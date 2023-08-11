@@ -9,6 +9,12 @@ body {
 }
 
 /* Start The Card Section */
+.logout__section {
+    min-width: 100px;
+    margin-left: 5px;
+    display: none !important;
+}
+
 .card .user-photo {
     width: 40px;
     height: 40px;

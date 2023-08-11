@@ -84,6 +84,8 @@ function loginUser() {
             myModal.hide();
 
             showSuccessAlert();
+
+            showUINavbarBtns();
         })
         .catch((error) => console.log(error));
 }
@@ -104,10 +106,13 @@ function showSuccessAlert() {
         showSuccessPlaceholder.append(wrapper);
     };
 
-    const alertTrigger = document.querySelector(".submit-login");
-    if (alertTrigger) {
-        alertTrigger.addEventListener("click", () => {
-            appendAlert("Nice, you triggered this alert message!", "success");
-        });
-    }
+    appendAlert("You have logged in successfully", "success");
+}
+
+const logInSection = document.querySelector(".user-info__section ");
+const logOutSection = document.querySelector(".logout__section ");
+
+function showUINavbarBtns() {
+    logInSection.style.setProperty("display", "none", "important");
+    logOutSection.style.setProperty("display", "block", "important");
 }
