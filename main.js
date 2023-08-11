@@ -116,3 +116,8 @@ function showUINavbarBtns() {
     logInSection.style.setProperty("display", "none", "important");
     logOutSection.style.setProperty("display", "block", "important");
 }
+
+/* TODO tomorrow:
+    1- Once you press the logout btn, you logout and show the original buttons
+    2- Handle the error in case the login details are wrong
+ */
