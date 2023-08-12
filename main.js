@@ -90,24 +90,38 @@ function loginUser() {
         .catch((error) => console.log(error));
 }
 
+// The function that will log out which will change the display of buttons, use the function to show the alert and remove the token from the local storage
+function logOut() {
+    logInSection.style.setProperty("display", "flex", "important");
+    logOutSection.style.setProperty("display", "none", "important");
+
+    showAlert("You have logged out successfully", "danger");
+
+    removeAlertAutomatically();
+
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+}
+
 // A function to show that the login went successfully
 function showAlert(message, type) {
-    const showSuccessPlaceholder = document.getElementById(
+    const showAlertPlaceholder = document.getElementById(
         "showAlertPlaceholder"
     );
-    // const appendAlert = (message, type) => {
+
+    showAlertPlaceholder.style.display = "block";
+
     const wrapper = document.createElement("div");
     wrapper.innerHTML = [
-        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
         `   <div>${message}</div>`,
         '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
         "</div>",
     ].join("");
 
-    showSuccessPlaceholder.append(wrapper);
-    // };
+    showAlertPlaceholder.append(wrapper);
 
-    // appendAlert("You have logged in successfully", "success");
+    // removeAlertAutomatically();
 }
 
 const logInSection = document.querySelector(".user-info__section ");
@@ -118,13 +132,9 @@ function showUINavbarBtns() {
     logOutSection.style.setProperty("display", "block", "important");
 }
 
-function logOut() {
-    logInSection.style.setProperty("display", "flex", "important");
-    logOutSection.style.setProperty("display", "none", "important");
-    showAlert("You have logged out successfully", "danger");
+// Function to Remove the alert after two seconds
+function removeAlertAutomatically() {
+    setTimeout(() => {
+        document.getElementById("showAlertPlaceholder").style.display = "none";
+    }, 2000);
 }
-
-/* TODO tomorrow:
-    1- Once you press the logout btn, you logout and show the original buttons
-    2- Handle the error in case the login details are wrong
- */
