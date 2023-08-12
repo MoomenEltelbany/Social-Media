@@ -47,13 +47,10 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
     }
 });
 
-/*
-Todo tomorrow:
-    ==> Get the username and password
-    ==> Check if they have a token
-    ==> Save the token in the localStorage
-    ==> Close the modal
-*/
+const logInSection = document.querySelector(".user-info__section ");
+const logOutSection = document.querySelector(".logout__section ");
+
+showUINavbarBtns();
 
 // Capturing the email and password inputs
 const emailInput = document.querySelector("#recipient-name");
@@ -92,15 +89,14 @@ function loginUser() {
 
 // The function that will log out which will change the display of buttons, use the function to show the alert and remove the token from the local storage
 function logOut() {
-    logInSection.style.setProperty("display", "flex", "important");
-    logOutSection.style.setProperty("display", "none", "important");
-
     showAlert("You have logged out successfully", "danger");
 
-    removeAlertAutomatically();
+    // removeAlertAutomatically();
 
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+
+    showUINavbarBtns();
 }
 
 // A function to show that the login went successfully
@@ -124,17 +120,21 @@ function showAlert(message, type) {
     // removeAlertAutomatically();
 }
 
-const logInSection = document.querySelector(".user-info__section ");
-const logOutSection = document.querySelector(".logout__section ");
-
 function showUINavbarBtns() {
-    logInSection.style.setProperty("display", "none", "important");
-    logOutSection.style.setProperty("display", "block", "important");
+    let checkToken = localStorage.getItem("token");
+
+    if (checkToken == null) {
+        logInSection.style.setProperty("display", "flex", "important");
+        logOutSection.style.setProperty("display", "none", "important");
+    } else {
+        logInSection.style.setProperty("display", "none", "important");
+        logOutSection.style.setProperty("display", "block", "important");
+    }
 }
 
 // Function to Remove the alert after two seconds
-function removeAlertAutomatically() {
-    setTimeout(() => {
-        document.getElementById("showAlertPlaceholder").style.display = "none";
-    }, 2000);
-}
+// function removeAlertAutomatically() {
+//     setTimeout(() => {
+//         document.getElementById("showAlertPlaceholder").style.display = "none";
+//     }, 2000);
+// }
