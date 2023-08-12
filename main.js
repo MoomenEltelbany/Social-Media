@@ -83,16 +83,17 @@ function loginUser() {
             // Closing the modal
             myModal.hide();
 
-            showSuccessAlert();
+            showAlert();
 
             showUINavbarBtns();
         })
         .catch((error) => console.log(error));
 }
 
-function showSuccessAlert() {
+// A function to show that the login went successfully
+function showAlert() {
     const showSuccessPlaceholder = document.getElementById(
-        "showSuccessPlaceholder"
+        "showAlertPlaceholder"
     );
     const appendAlert = (message, type) => {
         const wrapper = document.createElement("div");
@@ -115,6 +116,12 @@ const logOutSection = document.querySelector(".logout__section ");
 function showUINavbarBtns() {
     logInSection.style.setProperty("display", "none", "important");
     logOutSection.style.setProperty("display", "block", "important");
+}
+
+function logOut() {
+    logInSection.style.setProperty("display", "flex", "important");
+    logOutSection.style.setProperty("display", "none", "important");
+    showAlert();
 }
 
 /* TODO tomorrow:
