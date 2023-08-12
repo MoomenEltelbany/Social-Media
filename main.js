@@ -83,7 +83,7 @@ function loginUser() {
             // Closing the modal
             myModal.hide();
 
-            showAlert();
+            showAlert("You have logged in successfully", "success");
 
             showUINavbarBtns();
         })
@@ -91,23 +91,23 @@ function loginUser() {
 }
 
 // A function to show that the login went successfully
-function showAlert() {
+function showAlert(message, type) {
     const showSuccessPlaceholder = document.getElementById(
         "showAlertPlaceholder"
     );
-    const appendAlert = (message, type) => {
-        const wrapper = document.createElement("div");
-        wrapper.innerHTML = [
-            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-            `   <div>${message}</div>`,
-            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-            "</div>",
-        ].join("");
+    // const appendAlert = (message, type) => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        "</div>",
+    ].join("");
 
-        showSuccessPlaceholder.append(wrapper);
-    };
+    showSuccessPlaceholder.append(wrapper);
+    // };
 
-    appendAlert("You have logged in successfully", "success");
+    // appendAlert("You have logged in successfully", "success");
 }
 
 const logInSection = document.querySelector(".user-info__section ");
@@ -121,7 +121,7 @@ function showUINavbarBtns() {
 function logOut() {
     logInSection.style.setProperty("display", "flex", "important");
     logOutSection.style.setProperty("display", "none", "important");
-    showAlert();
+    showAlert("You have logged out successfully", "danger");
 }
 
 /* TODO tomorrow:
