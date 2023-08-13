@@ -47,6 +47,9 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
     }
 });
 
+// Capturing the Add Post Button
+const addPostBtn = document.querySelector(".add-post-btn");
+
 const logInSection = document.querySelector(".user-info__section ");
 const logOutSection = document.querySelector(".logout__section ");
 
@@ -91,8 +94,6 @@ function loginUser() {
 function logOut() {
     showAlert("You have logged out successfully", "danger");
 
-    // removeAlertAutomatically();
-
     localStorage.removeItem("user");
     localStorage.removeItem("token");
 
@@ -116,25 +117,18 @@ function showAlert(message, type) {
     ].join("");
 
     showAlertPlaceholder.append(wrapper);
-
-    // removeAlertAutomatically();
 }
 
 function showUINavbarBtns() {
     let checkToken = localStorage.getItem("token");
 
     if (checkToken == null) {
+        addPostBtn.style.setProperty("display", "none", "important");
         logInSection.style.setProperty("display", "flex", "important");
         logOutSection.style.setProperty("display", "none", "important");
     } else {
+        addPostBtn.style.setProperty("display", "flex", "important");
         logInSection.style.setProperty("display", "none", "important");
         logOutSection.style.setProperty("display", "block", "important");
     }
 }
-
-// Function to Remove the alert after two seconds
-// function removeAlertAutomatically() {
-//     setTimeout(() => {
-//         document.getElementById("showAlertPlaceholder").style.display = "none";
-//     }, 2000);
-// }
