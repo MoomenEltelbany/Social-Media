@@ -22,7 +22,7 @@
 
     <body>
         <!-- Start ADD Post Button -->
-        <div class="add-post-btn" onclick="addPost()" data-bs-toggle="modal" data-bs-target="#addPostModal">
+        <div class="add-post-btn" data-bs-toggle="modal" data-bs-target="#addPostModal">
             +
         </div>
         <!-- //End ADD Post Button //-->
@@ -104,19 +104,18 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Title</label>
+                                <label for="post-title-name" class="col-form-label">Title</label>
                                 <input type="text" class="form-control" id="post-title-name">
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Body</label>
+                                <label for="post-body-name" class="col-form-label">Body</label>
                                 <textarea name="" id="post-body-name"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary submit-login"
-                            onclick="registerUser()">Register</button>
+                        <button type="button" class="btn btn-primary submit-login" onclick="addPost()">Register</button>
                     </div>
                 </div>
             </div>

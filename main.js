@@ -142,7 +142,23 @@ function registerUser() {
 }
 
 // A Function to add post to the page
-function addPost() {}
+function addPost() {
+    const postTitle = document.querySelector("#post-title-name");
+    const postBody = document.querySelector("#post-body-name");
+
+    const token = localStorage.getItem("token");
+
+    let params = {
+        title: postTitle.value,
+        password: postBody.value,
+        token: token,
+    };
+
+    axios.post(`${baseURL}/posts`, params).then((response) => {
+        // Positive request and saving the data in the Local Storage
+        console.log(response);
+    });
+}
 
 // A function to show that the login went successfully
 function showAlert(message, type) {
