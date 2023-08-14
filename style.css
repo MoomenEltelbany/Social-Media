@@ -32,9 +32,19 @@ body {
 
 /* Start The Card Section */
 .logout__section {
-    min-width: 100px;
     margin-left: 5px;
     display: none !important;
+}
+
+.logout__section a {
+    min-width: 100px;
+}
+
+.logout__section p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0 !important;
 }
 
 .card .user-photo {

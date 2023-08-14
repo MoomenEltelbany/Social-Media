@@ -92,6 +92,10 @@ function loginUser() {
             showAlert("You have logged in successfully", "success");
 
             showUINavbarBtns();
+
+            document.querySelector(".logged-in-username").innerHTML =
+                params.username;
+            console.log(params.username);
         })
         .catch((error) => {
             const message = error.response.data.message;
@@ -166,6 +170,6 @@ function showUINavbarBtns() {
     } else {
         addPostBtn.style.setProperty("display", "flex", "important");
         logInSection.style.setProperty("display", "none", "important");
-        logOutSection.style.setProperty("display", "block", "important");
+        logOutSection.style.setProperty("display", "flex", "important");
     }
 }
