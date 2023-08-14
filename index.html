@@ -27,6 +27,7 @@
         </div>
         <!-- //End ADD Post Button //-->
         <!-- Start MODALS -->
+        <!-- Start the Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -39,6 +40,7 @@
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Username:</label>
                                 <input type="text" class="form-control" id="recipient-name" value="moomen">
+                                <p class="wrong-username-msg text-danger"></p>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-password" class="col-form-label">Password:</label>
@@ -53,6 +55,41 @@
                 </div>
             </div>
         </div>
+        <!-- End the Login Modal -->
+        <!-- Start the Register Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="register-name" value="moomen">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Username:</label>
+                                <input type="text" class="form-control" id="register-user-name" value="moomen">
+                                <p class="wrong-register-msg text-danger"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-password" class="col-form-label">Password:</label>
+                                <input type="password" class="form-control" id="register-password" value="123456">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit-login"
+                            onclick="registerUser()">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End the Register Modal -->
         <!-- // End MODALS -->
 
         <!-- Starting Alerts -->
@@ -84,7 +121,7 @@
                     <a id="login-btn" class="btn btn-outline-success" type="submit" aria-current="page" href="#"
                         data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                     <a id="register-btn" class="btn btn-outline-success" type="submit" aria-current="page"
-                        href="#">Register</a>
+                        data-bs-toggle="modal" data-bs-target="#registerModal" href="#">Register</a>
                 </div>
                 <div class="logout__section d-flex gap-2 align-items-center">
                     <a id="logout-btn" class="btn btn-outline-danger" type="submit" onclick="logOut()">Log Out</a>

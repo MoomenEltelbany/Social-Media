@@ -55,15 +55,21 @@ const logOutSection = document.querySelector(".logout__section ");
 
 showUINavbarBtns();
 
-// Capturing the email and password inputs
+// Capturing the username and password inputs in the LOGIN MODAl
 const emailInput = document.querySelector("#recipient-name");
 const passwordInput = document.querySelector("#recipient-password");
+
+// Capturing the name, username and password inputs in the LOGIN MODAl
+const registerName = document.querySelector("#register-name");
+const registerUserName = document.querySelector("#register-user-name");
+const registerPassword = document.querySelector("#register-password");
 
 // Declaring the token variable globally
 let token = ``;
 
 // Creating an instance of the modal through the bootstrap.Modal class
 const myModal = new bootstrap.Modal("#loginModal");
+const myRegisterModal = new bootstrap.Modal("#registerModal");
 
 // Function that will be invoked once the client hits the submit btn in the login form
 function loginUser() {
@@ -87,7 +93,10 @@ function loginUser() {
 
             showUINavbarBtns();
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            const message = error.response.data.message;
+            document.querySelector(".wrong-username-msg").innerHTML = message;
+        });
 }
 
 // The function that will log out which will change the display of buttons, use the function to show the alert and remove the token from the local storage
@@ -98,6 +107,34 @@ function logOut() {
     localStorage.removeItem("token");
 
     showUINavbarBtns();
+}
+
+function registerUser() {
+    let params = {
+        name: registerName.value,
+        username: registerUserName.value,
+        password: registerPassword.value,
+    };
+
+    axios
+        .post(`${baseURL}/register`, params)
+        .then((response) => {
+            // Positive request and saving the data in the Local Storage
+            token = response.data.token;
+            localStorage.setItem("user", JSON.stringify(params));
+            localStorage.setItem("token", token);
+
+            // Closing the modal
+            myRegisterModal.hide();
+
+            showAlert("You have registered in successfully", "success");
+
+            showUINavbarBtns();
+        })
+        .catch((error) => {
+            const message = error.response.data.message;
+            document.querySelector(".wrong-register-msg").innerHTML = message;
+        });
 }
 
 // A function to show that the login went successfully
