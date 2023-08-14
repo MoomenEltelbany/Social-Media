@@ -141,6 +141,9 @@ function registerUser() {
         });
 }
 
+// A Function to add post to the page
+function addPost() {}
+
 // A function to show that the login went successfully
 function showAlert(message, type) {
     const showAlertPlaceholder = document.getElementById(

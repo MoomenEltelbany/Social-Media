@@ -22,11 +22,12 @@
 
     <body>
         <!-- Start ADD Post Button -->
-        <div class="add-post-btn">
+        <div class="add-post-btn" onclick="addPost()" data-bs-toggle="modal" data-bs-target="#addPostModal">
             +
         </div>
         <!-- //End ADD Post Button //-->
         <!-- Start MODALS -->
+
         <!-- Start the Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -56,6 +57,7 @@
             </div>
         </div>
         <!-- End the Login Modal -->
+
         <!-- Start the Register Modal -->
         <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -90,6 +92,36 @@
             </div>
         </div>
         <!-- End the Register Modal -->
+
+        <!-- Start the Add Post Modal -->
+        <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Title</label>
+                                <input type="text" class="form-control" id="post-title-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Body</label>
+                                <textarea name="" id="post-body-name"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit-login"
+                            onclick="registerUser()">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End the Add Post Modal -->
         <!-- // End MODALS -->
 
         <!-- Starting Alerts -->
