@@ -173,3 +173,10 @@ function showUINavbarBtns() {
         logOutSection.style.setProperty("display", "flex", "important");
     }
 }
+
+/*
+    TODO: 
+        1- The modal of the add post.
+        2- The user name next to the logout button disappears if we refresh.
+        3- Create Post and upload photos.
+*/
