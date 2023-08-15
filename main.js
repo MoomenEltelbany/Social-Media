@@ -25,7 +25,9 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
                     <h6>${author.username}</h6>
                 </section>
                 <section class="p-3">
-                    <img src="./imgs/1.jpeg" class="card-img-top rounded-bottom" alt="Post-Image">
+                    <img src= ${
+                        post.image
+                    }  class="card-img-top rounded-bottom" alt="Post-Image">
                     <div>
                         <p class="fs-6 text-body-tertiary">${
                             post.created_at
@@ -70,6 +72,7 @@ let token = ``;
 // Creating an instance of the modal through the bootstrap.Modal class
 const myModal = new bootstrap.Modal("#loginModal");
 const myRegisterModal = new bootstrap.Modal("#registerModal");
+const addPostModal = new bootstrap.Modal("#addPostModal");
 
 // Function that will be invoked once the client hits the submit btn in the login form
 function loginUser() {
@@ -166,8 +169,10 @@ function addPost() {
         })
         .then((response) => {
             // Positive request and saving the data in the Local Storage
+            addPostModal.hide();
             console.log(response);
-        });
+        })
+        .catch((error) => console.log(error));
 }
 
 // A function to show that the login went successfully
