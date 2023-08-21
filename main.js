@@ -1,22 +1,25 @@
 const baseURL = "https://tarmeezacademy.com/api/v1";
 
-// API Get request for the post
-axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
-    // Array for posts
-    let posts = response.data.data;
+getAllPosts();
 
-    // Post container
-    let postContainer = document.querySelector(".posts-container");
+function getAllPosts() {
+    // API Get request for the post
+    axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
+        // Array for posts
+        let posts = response.data.data;
 
-    postContainer.innerHTML = "";
-    // handle success
+        // Post container
+        let postContainer = document.querySelector(".posts-container");
 
-    for (post of posts) {
-        // Let Author details
-        let author = post.author;
+        postContainer.innerHTML = "";
+        // handle success
 
-        // console.log(post);
-        let postContent = `
+        for (post of posts) {
+            // Let Author details
+            let author = post.author;
+
+            // console.log(post);
+            let postContent = `
             <div class="card mt-4 w-100 shadow" style="width: 18rem;">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
                     <img src="${
@@ -45,9 +48,10 @@ axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
                 </section>
             </div>`;
 
-        postContainer.innerHTML += postContent;
-    }
-});
+            postContainer.innerHTML += postContent;
+        }
+    });
+}
 
 // Capturing the Add Post Button
 const addPostBtn = document.querySelector(".add-post-btn");
@@ -170,7 +174,6 @@ function addPost() {
         .then((response) => {
             // Positive request and saving the data in the Local Storage
             addPostModal.hide();
-            console.log(response);
         })
         .catch((error) => console.log(error));
 }

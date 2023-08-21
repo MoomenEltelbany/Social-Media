@@ -53,6 +53,12 @@ textarea:focus {
     display: none !important;
 }
 
+.logout__section img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 .logout__section a {
     min-width: 100px;
 }
