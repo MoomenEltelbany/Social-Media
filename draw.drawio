@@ -29,6 +29,9 @@
                 <mxCell id="4" value="Show Alert(Message, Type)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;strokeColor=#FFFF66;" parent="1" vertex="1">
                     <mxGeometry x="510" y="480" width="176" height="60" as="geometry"/>
                 </mxCell>
+                <mxCell id="16" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF0000;" edge="1" parent="1" source="7" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="7" value="ShowNavbarBtns" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;strokeColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="250" y="480" width="176" height="60" as="geometry"/>
                 </mxCell>
@@ -45,6 +48,9 @@
                 </mxCell>
                 <mxCell id="9" value="Logout User" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;strokeColor=#FF8000;" parent="1" vertex="1">
                     <mxGeometry x="60" y="190" width="176" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="getUserName()&lt;br&gt;-A function that bring the username from the local storage and user it in the navbar" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;strokeColor=#21E9FF;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="610" width="176" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

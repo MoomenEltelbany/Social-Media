@@ -99,10 +99,6 @@ function loginUser() {
             showAlert("You have logged in successfully", "success");
 
             showUINavbarBtns();
-
-            document.querySelector(".logged-in-username").innerHTML =
-                params.username;
-            console.log(params.username);
         })
         .catch((error) => {
             const message = error.response.data.message;
@@ -208,7 +204,16 @@ function showUINavbarBtns() {
         addPostBtn.style.setProperty("display", "flex", "important");
         logInSection.style.setProperty("display", "none", "important");
         logOutSection.style.setProperty("display", "flex", "important");
+        document.querySelector(".logged-in-username").innerHTML = getUserName();
     }
+}
+
+function getUserName() {
+    const userDetails = JSON.parse(localStorage.getItem("user"));
+
+    const username = userDetails.username;
+
+    return username;
 }
 
 /*
