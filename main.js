@@ -69,6 +69,7 @@ const passwordInput = document.querySelector("#recipient-password");
 const registerName = document.querySelector("#register-name");
 const registerUserName = document.querySelector("#register-user-name");
 const registerPassword = document.querySelector("#register-password");
+const registerPhoto = document.querySelector("#register-profile-image");
 
 // Declaring the token variable globally
 let token = ``;
@@ -117,18 +118,27 @@ function logOut() {
 }
 
 function registerUser() {
-    let params = {
-        name: registerName.value,
-        username: registerUserName.value,
-        password: registerPassword.value,
+    const headers = {
+        "Content-Type": "multipart/form-data",
     };
 
+    console.log(registerPhoto.files[0]);
+
+    const registerData = new FormData();
+
+    registerData.append("name", registerName.value);
+    registerData.append("username", registerUserName.value);
+    registerData.append("password", registerPassword.value);
+    registerData.append("image", registerPhoto.files[0]);
+
     axios
-        .post(`${baseURL}/register`, params)
+        .post(`${baseURL}/register`, registerData, {
+            headers: headers,
+        })
         .then((response) => {
             // Positive request and saving the data in the Local Storage
             token = response.data.token;
-            localStorage.setItem("user", JSON.stringify(params));
+            localStorage.setItem("user", JSON.stringify(registerData));
             localStorage.setItem("token", token);
 
             // Closing the modal
@@ -139,8 +149,9 @@ function registerUser() {
             showUINavbarBtns();
         })
         .catch((error) => {
-            const message = error.response.data.message;
-            document.querySelector(".wrong-register-msg").innerHTML = message;
+            // const message = error.response.data.message;
+            // document.querySelector(".wrong-register-msg").innerHTML = message;
+            console.log(error);
         });
 }
 
@@ -218,10 +229,3 @@ function getUserName() {
 
     return userDetails.username;
 }
-
-/*
-    TODO: 
-        1- The modal of the add post.
-        2- The user name next to the logout button disappears if we refresh.
-        3- Create Post and upload photos.
-*/
