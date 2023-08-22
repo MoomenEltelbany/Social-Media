@@ -65,7 +65,7 @@ showUINavbarBtns();
 const emailInput = document.querySelector("#recipient-name");
 const passwordInput = document.querySelector("#recipient-password");
 
-// Capturing the name, username and password inputs in the LOGIN MODAl
+// Capturing the name, username and password inputs in the REGISTER MODAl
 const registerName = document.querySelector("#register-name");
 const registerUserName = document.querySelector("#register-user-name");
 const registerPassword = document.querySelector("#register-password");
@@ -170,6 +170,8 @@ function addPost() {
         .then((response) => {
             // Positive request and saving the data in the Local Storage
             addPostModal.hide();
+            showAlert("Your post was added successfully", "success");
+            getAllPosts();
         })
         .catch((error) => console.log(error));
 }
@@ -211,9 +213,7 @@ function showUINavbarBtns() {
 function getUserName() {
     const userDetails = JSON.parse(localStorage.getItem("user"));
 
-    const username = userDetails.username;
-
-    return username;
+    return userDetails.username;
 }
 
 /*
