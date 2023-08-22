@@ -173,7 +173,10 @@ function addPost() {
             showAlert("Your post was added successfully", "success");
             getAllPosts();
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            const errorMessage = error.response.data.message;
+            showAlert(errorMessage, "danger");
+        });
 }
 
 // A function to show that the login went successfully
@@ -186,7 +189,7 @@ function showAlert(message, type) {
 
     const wrapper = document.createElement("div");
     wrapper.innerHTML = [
-        `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
+        `<div class=" position-absolute bottom-0 end-0 z-3 alert alert-${type} alert-dismissible fade show" role="alert" style="z-index: 999;">`,
         `   <div>${message}</div>`,
         '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
         "</div>",
