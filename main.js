@@ -122,23 +122,21 @@ function registerUser() {
         "Content-Type": "multipart/form-data",
     };
 
-    console.log(registerPhoto.files[0]);
-
     const registerData = new FormData();
 
     registerData.append("name", registerName.value);
     registerData.append("username", registerUserName.value);
     registerData.append("password", registerPassword.value);
     registerData.append("image", registerPhoto.files[0]);
-
     axios
         .post(`${baseURL}/register`, registerData, {
             headers: headers,
         })
         .then((response) => {
+            console.log(response);
             // Positive request and saving the data in the Local Storage
             token = response.data.token;
-            localStorage.setItem("user", JSON.stringify(registerData));
+            localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("token", token);
 
             // Closing the modal
@@ -220,12 +218,17 @@ function showUINavbarBtns() {
         addPostBtn.style.setProperty("display", "flex", "important");
         logInSection.style.setProperty("display", "none", "important");
         logOutSection.style.setProperty("display", "flex", "important");
-        document.querySelector(".logged-in-username").innerHTML = getUserName();
+
+        const user = getUserDetails();
+        document.querySelector(".logged-in-username").innerHTML = user.username;
+        document.querySelector("#profile-picture-image").src =
+            user.profile_image;
     }
 }
 
-function getUserName() {
+function getUserDetails() {
     const userDetails = JSON.parse(localStorage.getItem("user"));
+    console.log(userDetails);
 
-    return userDetails.username;
+    return userDetails;
 }
