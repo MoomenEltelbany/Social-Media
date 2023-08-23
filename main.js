@@ -76,7 +76,6 @@ let token = ``;
 // Creating an instance of the modal through the bootstrap.Modal class
 const myModal = new bootstrap.Modal("#loginModal");
 const myRegisterModal = new bootstrap.Modal("#registerModal");
-const addPostModal = new bootstrap.Modal("#addPostModal");
 
 // Function that will be invoked once the client hits the submit btn in the login form
 function loginUser() {
@@ -89,6 +88,7 @@ function loginUser() {
         .post(`${baseURL}/login`, params)
         .then((response) => {
             // Positive request and saving the data in the Local Storage
+            params["profile_image"] = response.data.user.profile_image;
             token = response.data.token;
             localStorage.setItem("user", JSON.stringify(params));
             localStorage.setItem("token", token);
@@ -100,8 +100,8 @@ function loginUser() {
 
             showUINavbarBtns();
 
-            document.querySelector("#profile-picture-image").src =
-                response.data.user.profile_image;
+            // document.querySelector(".profile-picture-image").src =
+            //     response.data.user.profile_image;
         })
         .catch((error) => {
             const message = error.response.data.message;
@@ -236,6 +236,7 @@ function showUINavbarBtns() {
 function getUserDetails() {
     const userDetails = JSON.parse(localStorage.getItem("user"));
 
+    console.log(userDetails);
     return userDetails;
 }
 
