@@ -52,7 +52,6 @@ function getAllPosts() {
         }
     });
 }
-
 // Capturing the Add Post Button
 const addPostBtn = document.querySelector(".add-post-btn");
 
@@ -100,6 +99,9 @@ function loginUser() {
             showAlert("You have logged in successfully", "success");
 
             showUINavbarBtns();
+
+            document.querySelector("#profile-picture-image").src =
+                response.data.user.profile_image;
         })
         .catch((error) => {
             const message = error.response.data.message;
@@ -211,11 +213,15 @@ function showUINavbarBtns() {
     let checkToken = localStorage.getItem("token");
 
     if (checkToken == null) {
-        addPostBtn.style.setProperty("display", "none", "important");
+        if (addPostBtn != null) {
+            addPostBtn.style.setProperty("display", "none", "important");
+        }
         logInSection.style.setProperty("display", "flex", "important");
         logOutSection.style.setProperty("display", "none", "important");
     } else {
-        addPostBtn.style.setProperty("display", "flex", "important");
+        if (addPostBtn != null) {
+            addPostBtn.style.setProperty("display", "flex", "important");
+        }
         logInSection.style.setProperty("display", "none", "important");
         logOutSection.style.setProperty("display", "flex", "important");
 
@@ -235,6 +241,7 @@ function getUserDetails() {
 
 function postClicked() {
     window.open(`postDetails.html`, "_blank");
+    showUINavbarBtns();
 }
 
 /*
