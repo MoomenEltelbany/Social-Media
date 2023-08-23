@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Social Media Website</title>
+        <title>Post Details</title>
 
         <!-- Bootstrap CDN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,13 +21,6 @@
     </head>
 
     <body>
-        <!-- Start ADD Post Button -->
-        <div class="add-post-btn" data-bs-toggle="modal" data-bs-target="#addPostModal">
-            +
-        </div>
-        <!-- //End ADD Post Button //-->
-        <!-- Start MODALS -->
-
         <!-- Start the Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -97,40 +90,6 @@
         </div>
         <!-- End the Register Modal -->
 
-        <!-- Start the Add Post Modal -->
-        <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="post-title-name" class="col-form-label">Title</label>
-                                <input type="text" class="form-control" id="post-title-name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="post-body-name" class="col-form-label">Body</label>
-                                <textarea name="" id="post-body-name"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label id="image-body-name" class="col-form-label">Image</label>
-                                <input type="file" class="form-control" id="post-image-name">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary submit-login" onclick="addPost()">Post</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End the Add Post Modal -->
-        <!-- // End MODALS -->
-
         <!-- Starting Alerts -->
         <div id="showAlertPlaceholder"></div>
         <!-- // Ending Alerts -->
@@ -140,7 +99,7 @@
             <nav
                 class="navbar navbar-expand-lg bg-body-tertiary p-2 shadow rounded d-flex justify-content-around align-items-center">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Tarmeez</a>
+                    <a class="navbar-brand" href="index.html">Tarmeez</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -170,9 +129,14 @@
             </nav>
         </header>
         <!--// Ending the Nav Bar //-->
+
         <!-- Starting the Card Section -->
         <div class="container posts-container col-9 m-auto">
-            <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;">
+            <div class="post-creater my-4 fs-1 fw-semibold">
+                <span>Moomen's</span>
+                post
+            </div>
+            <div class="card mt-4 w-100 shadow" style="width: 18rem;">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
                     <img src="imgs/1.png" alt="User-Name-Photo" class="user-photo border border-light-subtle border-2">
                     <h6>Moomen</h6>
@@ -192,9 +156,32 @@
                 </section>
             </div>
         </div>
+        <!-- Start Comments section -->
+        <div class="container col-9 m-auto comments">
+            <div class="comment-box p-3 border-bottom border-black">
+                <div class="comment-user-details">
+                    <img src="imgs/1.png" alt="Profile Picture">
+                    <span class="px-2 fs-5">Moomen</span>
+                </div>
+                <p class="py-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque veniam perferendis
+                    incidunt delectus,
+                    eum, optio exercitationem at accusamus corrupti aliquam, adipisci voluptatem sunt nulla quasi quae
+                    quidem voluptatibus quas. Dolores?</p>
+            </div>
+            <div class="comment-box p-3 border-bottom border-black">
+                <div class="comment-user-details">
+                    <img src="imgs/1.png" alt="Profile Picture">
+                    <span class="px-2 fs-5">Moomen</span>
+                </div>
+                <p class="py-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque veniam perferendis
+                    incidunt delectus,
+                    eum, optio exercitationem at accusamus corrupti aliquam, adipisci voluptatem sunt nulla quasi quae
+                    quidem voluptatibus quas. Dolores?</p>
+            </div>
+        </div>
+        <!-- End Comments section -->
         <!--// Ending the Card Section //-->
-    </body>
 
-    <script src="main.js"></script>
+    </body>
 
 </html>

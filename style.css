@@ -76,3 +76,14 @@ textarea:focus {
     border-radius: 50%;
 }
 /* End The Card Section */
+
+/* Start the Post Details Style */
+.comment-box {
+    background-color: rgb(221, 221, 221);
+}
+.comment-user-details img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+/* End the Post Details Style */

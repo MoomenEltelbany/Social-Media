@@ -20,7 +20,7 @@ function getAllPosts() {
 
             // console.log(post);
             let postContent = `
-            <div class="card mt-4 w-100 shadow" style="width: 18rem;">
+            <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;" onclick="postClicked()">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
                     <img src="${
                         "imgs/1.png" || author.profile_image
@@ -219,6 +219,7 @@ function showUINavbarBtns() {
         logInSection.style.setProperty("display", "none", "important");
         logOutSection.style.setProperty("display", "flex", "important");
 
+        // Getting the user object from the local storage and using the value of the username and profile_image to fill the navbar
         const user = getUserDetails();
         document.querySelector(".logged-in-username").innerHTML = user.username;
         document.querySelector("#profile-picture-image").src =
@@ -228,7 +229,19 @@ function showUINavbarBtns() {
 
 function getUserDetails() {
     const userDetails = JSON.parse(localStorage.getItem("user"));
-    console.log(userDetails);
 
     return userDetails;
 }
+
+function postClicked() {
+    window.open(`postDetails.html`, "_blank");
+}
+
+/*
+    TODO:     
+        1- Fill the comment section dynamically 
+        2- Change user's comment profile picture and user name
+        3- Change the name of the author of the post
+        4- Fill the comment automatically with what we have from the API
+        5- Send the ID of the post with the Query Parameter
+*/
