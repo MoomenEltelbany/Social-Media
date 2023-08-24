@@ -236,7 +236,6 @@ function showUINavbarBtns() {
 function getUserDetails() {
     const userDetails = JSON.parse(localStorage.getItem("user"));
 
-    console.log(userDetails);
     return userDetails;
 }
 
