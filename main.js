@@ -242,6 +242,7 @@ function getUserDetails() {
 function postClicked() {
     window.open(`postDetails.html`, "_blank");
     showUINavbarBtns();
+    axios.get(`${baseURL}/posts/postId`);
 }
 
 /*
