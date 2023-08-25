@@ -20,7 +20,9 @@ function getAllPosts() {
 
             // console.log(post);
             let postContent = `
-            <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;" onclick="postClicked()">
+            <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;" onclick="postClicked(${
+                post.id
+            })">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
                     <img src="${
                         "imgs/1.png" || author.profile_image
@@ -239,10 +241,9 @@ function getUserDetails() {
     return userDetails;
 }
 
-function postClicked() {
-    window.open(`postDetails.html`, "_blank");
+function postClicked(postId) {
+    window.open(`postDetails.html?postId=${postId}`, "_blank");
     showUINavbarBtns();
-    axios.get(`${baseURL}/posts/postId`);
 }
 
 /*
