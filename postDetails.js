@@ -64,4 +64,11 @@ function getClickedPost() {
         .catch((error) => console.log(error));
 }
 
+function addComment() {}
+
+/*
+    TODO: 
+        1- Start the comment in Postman so that we can add comments    
+*/
+
 getClickedPost();

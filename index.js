@@ -4,7 +4,7 @@ getAllPosts();
 
 function getAllPosts() {
     // API Get request for the post
-    axios.get(`${baseURL}/posts?limit=40`).then(function (response) {
+    axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
         // Array for posts
         let posts = response.data.data;
 
