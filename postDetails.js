@@ -8,6 +8,9 @@ function getClickedPost() {
         .then((response) => {
             const postData = response.data.data;
             const author = postData.author;
+            const comments = postData.comments;
+
+            console.log(comments);
 
             const postContainer = document.querySelector("#post-container");
             postContainer.innerHTML = "";
@@ -41,6 +44,22 @@ function getClickedPost() {
             `;
 
             postContainer.innerHTML = clickedPostContent;
+
+            const commentsContainer = document.querySelector(".comments");
+            commentsContainer.innerHTML = "";
+
+            for (comment of comments) {
+                const commentContent = `
+                <div class="comment-box p-3 border-bottom border-black">
+                <div class="comment-user-details">
+                    <img src="${comment.author.profile_image}" alt="Profile Picture">
+                    <span class="px-2 fs-5">${comment.author.username}</span>
+                </div>
+                <p class="py-2">${comment.body}</p>
+            </div>`;
+
+                commentsContainer.innerHTML += commentContent;
+            }
         })
         .catch((error) => console.log(error));
 }
