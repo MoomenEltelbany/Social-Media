@@ -10,12 +10,8 @@ function getClickedPost() {
             const author = postData.author;
             const comments = postData.comments;
 
-            console.log(comments);
-
             const postContainer = document.querySelector("#post-container");
             postContainer.innerHTML = "";
-
-            console.log(postData);
 
             let clickedPostContent = `
             <div class="post-creator my-4 fs-1 fw-semibold">
