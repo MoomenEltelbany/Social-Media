@@ -57,10 +57,31 @@ function getClickedPost() {
                 commentsContainer.innerHTML += commentContent;
             }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {});
 }
 
-function addComment() {}
+function addComment() {
+    const token = localStorage.getItem("token");
+
+    const commentInput = document.querySelector(".comment-input");
+
+    const param = {
+        body: commentInput.value,
+    };
+
+    const headers = {
+        authorization: `Bearer ${token}`,
+    };
+
+    axios
+        .post(`${baseURL}/posts/${postID}/comments`, param, {
+            headers: headers,
+        })
+        .then((response) => {
+            getClickedPost();
+            commentInput.value = "";
+        });
+}
 
 /*
     TODO: 
