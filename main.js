@@ -6,6 +6,8 @@ const addPostBtn = document.querySelector(".add-post-btn");
 const logInSection = document.querySelector(".user-info__section ");
 const logOutSection = document.querySelector(".logout__section ");
 
+const commentSection = document.querySelector(".post-comment-section");
+
 showUINavbarBtns();
 
 // Capturing the username and password inputs in the LOGIN MODAl
@@ -166,12 +168,14 @@ function showUINavbarBtns() {
         }
         logInSection.style.setProperty("display", "flex", "important");
         logOutSection.style.setProperty("display", "none", "important");
+        commentSection.style.setProperty("display", "none", "important");
     } else {
         if (addPostBtn != null) {
             addPostBtn.style.setProperty("display", "flex", "important");
         }
         logInSection.style.setProperty("display", "none", "important");
         logOutSection.style.setProperty("display", "flex", "important");
+        commentSection.style.setProperty("display", "flex", "important");
 
         // Getting the user object from the local storage and using the value of the username and profile_image to fill the navbar
         const user = getUserDetails();

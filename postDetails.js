@@ -3,6 +3,8 @@ const searchParams = url.searchParams;
 const postID = searchParams.get("postId");
 
 function getClickedPost() {
+    // checkTokenToVerifyPostComment();
+
     axios
         .get(`${baseURL}/posts/${postID}`)
         .then((response) => {
@@ -82,6 +84,22 @@ function addComment() {
             commentInput.value = "";
         });
 }
+
+console.log(localStorage.getItem("token"));
+
+// function checkTokenToVerifyPostComment() {
+//     const commentSection = document.querySelector(".post-comment-section");
+
+//     if (localStorage.getItem("token") == null) {
+//         commentSection.style.setProperty("display", "none", "important");
+//     } else {
+//         commentSection.style.setProperty("display", "flex", "important");
+//     }
+
+//     // getClickedPost();
+// }
+
+// checkTokenToVerifyPostComment();
 
 /*
     TODO: 
