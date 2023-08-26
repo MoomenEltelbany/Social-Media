@@ -86,4 +86,8 @@ textarea:focus {
     height: 40px;
     border-radius: 50%;
 }
+
+.send-comment input {
+    width: 100%;
+}
 /* End the Post Details Style */
