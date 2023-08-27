@@ -1,13 +1,15 @@
+// Those lines are used to get the post ID from the url
+// The Post ID was sent as a query parameter
 const url = new URL(window.location);
 const searchParams = url.searchParams;
 const postID = searchParams.get("postId");
 
+// This function will be used to get the post clicked by the user and shows exactly the clicked post
 function getClickedPost() {
-    // checkTokenToVerifyPostComment();
-
     axios
         .get(`${baseURL}/posts/${postID}`)
         .then((response) => {
+            // Here we bring the data of the response of the API
             const postData = response.data.data;
             const author = postData.author;
             const comments = postData.comments;
@@ -15,6 +17,7 @@ function getClickedPost() {
             const postContainer = document.querySelector("#post-container");
             postContainer.innerHTML = "";
 
+            // Here we are filling the post with the information about the author's information and content
             let clickedPostContent = `
             <div class="post-creator my-4 fs-1 fw-semibold">
                 <span>${author.username}'s</span>
@@ -46,6 +49,7 @@ function getClickedPost() {
             const commentsContainer = document.querySelector(".comments");
             commentsContainer.innerHTML = "";
 
+            // Here we are filling the comments of the post
             for (comment of comments) {
                 const commentContent = `
                 <div class="comment-box p-3 border-bottom border-black">
@@ -62,6 +66,7 @@ function getClickedPost() {
         .catch((error) => {});
 }
 
+// function about adding comment with the information about the user
 function addComment() {
     const token = localStorage.getItem("token");
 
@@ -84,26 +89,5 @@ function addComment() {
             commentInput.value = "";
         });
 }
-
-console.log(localStorage.getItem("token"));
-
-// function checkTokenToVerifyPostComment() {
-//     const commentSection = document.querySelector(".post-comment-section");
-
-//     if (localStorage.getItem("token") == null) {
-//         commentSection.style.setProperty("display", "none", "important");
-//     } else {
-//         commentSection.style.setProperty("display", "flex", "important");
-//     }
-
-//     // getClickedPost();
-// }
-
-// checkTokenToVerifyPostComment();
-
-/*
-    TODO: 
-        1- Start the comment in Postman so that we can add comments    
-*/
 
 getClickedPost();

@@ -195,12 +195,3 @@ function postClicked(postId) {
     window.open(`postDetails.html?postId=${postId}`, "_blank");
     showUINavbarBtns();
 }
-
-/*
-    TODO:     
-        1- Fill the comment section dynamically 
-        2- Change user's comment profile picture and user name
-        3- Change the name of the author of the post
-        4- Fill the comment automatically with what we have from the API
-        5- Send the ID of the post with the Query Parameter
-*/
