@@ -201,3 +201,5 @@ function postClicked(postId) {
     window.open(`postDetails.html?postId=${postId}`, "_blank");
     showUINavbarBtns();
 }
+
+function editPostClicked() {}

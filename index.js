@@ -20,12 +20,16 @@ function getAllPosts() {
 
             // console.log(post);
             let postContent = `
-            <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;" onclick="postClicked(${post.id})">
-                <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
+            <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;">
+                <section class="d-flex align-items-center gap-2 py-2 px-3 bg-body-tertiary border-bottom border-2">
                     <img src="${author.profile_image}" alt="User-Photo" class="user-photo border border-light-subtle border-2">
                     <h6>${author.username}</h6>
+                    <div class='ms-auto'>
+                        <button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal">Edit</button>
+                        <button type="button" class="btn btn-danger ">Delete</button>
+                    </div>
                 </section>
-                <section class="p-3">
+                <section class="p-3" onclick="postClicked(${post.id})">
                     <img src= ${post.image}  class="card-img-top rounded-bottom" alt="Post-Image">
                     <div>
                         <p class="fs-6 text-body-tertiary">${post.created_at}</p>

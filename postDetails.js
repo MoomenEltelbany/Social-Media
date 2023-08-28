@@ -27,6 +27,10 @@ function getClickedPost() {
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
                     <img src="${author.profile_image}" alt="User-Name-Photo" class="user-photo border border-light-subtle border-2">
                     <h6>${author.username}</h6>
+                    <div class='ms-auto'>
+                        <button type="button" class="btn btn-secondary ms-auto" onclick='editPostClicked()'>Edit</button>
+                        <button type="button" class="btn btn-danger ">Delete</button>
+                    </div>
                 </section>
                 <section class="p-3">
                     <img src="${postData.image}" class="card-img-top rounded-bottom" alt="Post-Image">

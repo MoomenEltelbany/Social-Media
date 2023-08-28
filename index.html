@@ -129,6 +129,38 @@
             </div>
         </div>
         <!-- End the Add Post Modal -->
+        <!-- Start the Edit Post Modal -->
+        <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="post-title-name" class="col-form-label">Title</label>
+                                <input type="text" class="form-control" id="post-title-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="post-body-name" class="col-form-label">Body</label>
+                                <textarea name="" id="post-body-name"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label id="image-body-name" class="col-form-label">Image</label>
+                                <input type="file" class="form-control" id="post-image-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit-login" onclick="addPost()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End the Edit Post Modal -->
         <!-- // End MODALS -->
 
         <!-- Starting Alerts -->
@@ -176,6 +208,7 @@
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
                     <img src="imgs/1.png" alt="User-Name-Photo" class="user-photo border border-light-subtle border-2">
                     <h6>Moomen</h6>
+
                 </section>
                 <section class="p-3">
                     <img src="./imgs/1.jpeg" class="card-img-top rounded-bottom" alt="Post-Image">
