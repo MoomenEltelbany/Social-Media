@@ -2,6 +2,12 @@ const addPostModal = new bootstrap.Modal("#addPostModal");
 
 getAllPosts();
 
+function getUserDetails() {
+    const userDetails = JSON.parse(localStorage.getItem("user"));
+
+    return userDetails;
+}
+
 function getAllPosts() {
     // API Get request for the post
     axios.get(`${baseURL}/posts?limit=4`).then(function (response) {
@@ -11,10 +17,25 @@ function getAllPosts() {
         // Post container
         let postContainer = document.querySelector(".posts-container");
 
-        postContainer.innerHTML = "";
-        // handle success
+        const user = getUserDetails();
 
+        postContainer.innerHTML = "";
+
+        let editBtn = ``;
+
+        let deleteBtn = ``;
+        // handle success
         for (post of posts) {
+            console.log(user.userID);
+            console.log(post.author.id);
+
+            if (user.userID === post.author.id) {
+                editBtn = `<button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal" onclick = 'editPostClicked(${JSON.stringify(
+                    post
+                )})'>Edit</button>`;
+
+                deleteBtn = `<button type="button" class="btn btn-danger ">Delete</button>`;
+            }
             // Let Author details
             let author = post.author;
 
@@ -25,8 +46,8 @@ function getAllPosts() {
                     <img src="${author.profile_image}" alt="User-Photo" class="user-photo border border-light-subtle border-2">
                     <h6>${author.username}</h6>
                     <div class='ms-auto'>
-                        <button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal">Edit</button>
-                        <button type="button" class="btn btn-danger ">Delete</button>
+                        ${editBtn}
+                        ${deleteBtn}
                     </div>
                 </section>
                 <section class="p-3" onclick="postClicked(${post.id})">

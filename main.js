@@ -39,6 +39,7 @@ function loginUser() {
         .then((response) => {
             // Positive request and saving the data in the Local Storage
             params["profile_image"] = response.data.user.profile_image;
+            params["userID"] = response.data.user.id;
             token = response.data.token;
             localStorage.setItem("user", JSON.stringify(params));
             localStorage.setItem("token", token);
@@ -202,4 +203,44 @@ function postClicked(postId) {
     showUINavbarBtns();
 }
 
-function editPostClicked() {}
+const editPostTitleName = document.querySelector("#edit-post-title-name");
+const editPostBodyName = document.querySelector("#edit-post-body-name");
+const editPostImageName = document.querySelector("#edit-post-image-name");
+
+function editPostClicked(postObject) {
+    const postID = postObject.id;
+
+    editPostTitleName.value = postObject.title;
+    editPostBodyName.value = postObject.body;
+
+    editPost(
+        postID,
+        editPostTitleName.value,
+        editPostBodyName.value,
+        editPostImageName.files[0]
+    );
+
+    console.log(postObject);
+}
+
+function editPost(id, title, body, image) {
+    const token = localStorage.getItem("token");
+
+    const headers = {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+    };
+
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("body", body);
+    formData.append("image", image);
+    formData.append("_method", "put");
+
+    axios
+        .post(`${baseURL}/posts/${id}`, formData, {
+            headers: headers,
+        })
+        .then((response) => console.log(response));
+}
