@@ -240,5 +240,7 @@ function editPost() {
             showAlert("Your post was edited successfully", "success");
             getAllPosts();
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+            showAlert(error.response.data.message, "danger");
+        });
 }
