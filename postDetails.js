@@ -25,19 +25,29 @@ function getClickedPost() {
             </div>
             <div class="card mt-4 w-100 shadow" style="width: 18rem;">
                 <section class="d-flex align-items-center gap-2 p-3 bg-body-tertiary border-bottom border-2">
-                    <img src="${author.profile_image}" alt="User-Name-Photo" class="user-photo border border-light-subtle border-2">
+                    <img src="${
+                        author.profile_image
+                    }" alt="User-Name-Photo" class="user-photo border border-light-subtle border-2">
                     <h6>${author.username}</h6>
                     <div class='ms-auto'>
-                        <button type="button" class="btn btn-secondary ms-auto" onclick='editPostClicked()'>Edit</button>
+                       <button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal" onclick = 'editThisPost(${JSON.stringify(
+                           postData
+                       )})'>Edit</button>
                         <button type="button" class="btn btn-danger ">Delete</button>
                     </div>
                 </section>
                 <section class="p-3">
-                    <img src="${postData.image}" class="card-img-top rounded-bottom" alt="Post-Image">
+                    <img src="${
+                        postData.image
+                    }" class="card-img-top rounded-bottom" alt="Post-Image">
                     <div>
-                        <p class="fs-6 text-body-tertiary">${postData.created_at}</p>
+                        <p class="fs-6 text-body-tertiary">${
+                            postData.created_at
+                        }</p>
                         <h5 class="card-title">Special ${postData.title}</h5>
-                        <p class="card-text pb-2 border-bottom border-2">${postData.body}</p>
+                        <p class="card-text pb-2 border-bottom border-2">${
+                            postData.body
+                        }</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pen" viewBox="0 0 16 16">
                             <path
@@ -95,3 +105,10 @@ function addComment() {
 }
 
 getClickedPost();
+
+function editThisPost(postObj) {
+    editPostTitleName.value = postObj.title;
+    editPostBodyName.value = postObj.body;
+
+    document.querySelector("#post-id-input").value = postObj.id;
+}

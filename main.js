@@ -212,8 +212,6 @@ function editPostClicked(postObject) {
     editPostBodyName.value = postObject.body;
 
     document.querySelector("#post-id-input").value = postObject.id;
-
-    console.log(postObject);
 }
 
 const editPostModal = new bootstrap.Modal("#editPostModal");
