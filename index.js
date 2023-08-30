@@ -26,15 +26,15 @@ function getAllPosts() {
         let deleteBtn = ``;
         // handle success
         for (post of posts) {
-            console.log(user.userID);
-            console.log(post.author.id);
-
             if (user.userID === post.author.id) {
                 editBtn = `<button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal" onclick = 'editPostClicked(${JSON.stringify(
                     post
                 )})'>Edit</button>`;
 
                 deleteBtn = `<button type="button" class="btn btn-danger ">Delete</button>`;
+            } else {
+                editBtn = "";
+                deleteBtn = "";
             }
             // Let Author details
             let author = post.author;

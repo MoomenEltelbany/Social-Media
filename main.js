@@ -208,39 +208,37 @@ const editPostBodyName = document.querySelector("#edit-post-body-name");
 const editPostImageName = document.querySelector("#edit-post-image-name");
 
 function editPostClicked(postObject) {
-    const postID = postObject.id;
-
     editPostTitleName.value = postObject.title;
     editPostBodyName.value = postObject.body;
 
-    editPost(
-        postID,
-        editPostTitleName.value,
-        editPostBodyName.value,
-        editPostImageName.files[0]
-    );
+    document.querySelector("#post-id-input").value = postObject.id;
 
     console.log(postObject);
 }
 
-function editPost(id, title, body, image) {
-    const token = localStorage.getItem("token");
+const editPostModal = new bootstrap.Modal("#editPostModal");
 
+function editPost() {
+    let postId = document.querySelector("#post-id-input").value;
+
+    const token = localStorage.getItem("token");
     const headers = {
         authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",
     };
-
     const formData = new FormData();
-
-    formData.append("title", title);
-    formData.append("body", body);
-    formData.append("image", image);
+    formData.append("title", editPostTitleName.value);
+    formData.append("body", editPostBodyName.value);
+    formData.append("image", editPostImageName.files[0]);
     formData.append("_method", "put");
-
     axios
-        .post(`${baseURL}/posts/${id}`, formData, {
+        .post(`${baseURL}/posts/${postId}`, formData, {
             headers: headers,
         })
-        .then((response) => console.log(response));
+        .then((response) => {
+            editPostModal.hide();
+            showAlert("Your post was edited successfully", "success");
+            getAllPosts();
+        })
+        .catch((error) => console.log(error));
 }
