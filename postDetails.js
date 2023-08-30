@@ -106,9 +106,4 @@ function addComment() {
 
 getClickedPost();
 
-function editThisPost(postObj) {
-    editPostTitleName.value = postObj.title;
-    editPostBodyName.value = postObj.body;
-
-    document.querySelector("#post-id-input").value = postObj.id;
-}
+function editThisPost(postObj) {}
