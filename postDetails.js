@@ -105,5 +105,3 @@ function addComment() {
 }
 
 getClickedPost();
-
-function editThisPost(postObj) {}

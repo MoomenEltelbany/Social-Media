@@ -14,6 +14,8 @@ function getAllPosts() {
         // Array for posts
         let posts = response.data.data;
 
+        let token = localStorage.getItem("token");
+
         // Post container
         let postContainer = document.querySelector(".posts-container");
 
@@ -26,20 +28,21 @@ function getAllPosts() {
         let deleteBtn = ``;
         // handle success
         for (post of posts) {
-            if (user.userID === post.author.id) {
-                editBtn = `<button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal" onclick = 'editPostClicked(${JSON.stringify(
-                    post
-                )})'>Edit</button>`;
+            if (token != null) {
+                if (user.userID === post.author.id) {
+                    editBtn = `<button type="button" class="btn btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#editPostModal" onclick = 'editPostClicked(${JSON.stringify(
+                        post
+                    )})'>Edit</button>`;
 
-                deleteBtn = `<button type="button" class="btn btn-danger ">Delete</button>`;
-            } else {
-                editBtn = "";
-                deleteBtn = "";
+                    deleteBtn = `<button type="button" class="btn btn-danger ">Delete</button>`;
+                } else {
+                    editBtn = "";
+                    deleteBtn = "";
+                }
             }
             // Let Author details
             let author = post.author;
 
-            // console.log(post);
             let postContent = `
             <div class="card mt-4 w-100 shadow" style="width: 18rem; cursor: pointer;">
                 <section class="d-flex align-items-center gap-2 py-2 px-3 bg-body-tertiary border-bottom border-2">
