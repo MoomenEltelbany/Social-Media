@@ -34,7 +34,7 @@ function getAllPosts() {
                         post
                     )})'>Edit</button>`;
 
-                    deleteBtn = `<button type="button" class="btn btn-danger ">Delete</button>`;
+                    deleteBtn = `<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePostBtnClicked(${post.id})">Delete</button>`;
                 } else {
                     editBtn = "";
                     deleteBtn = "";

@@ -215,6 +215,7 @@ function editPostClicked(postObject) {
 }
 
 const editPostModal = new bootstrap.Modal("#editPostModal");
+const deletePostModal = new bootstrap.Modal("#deleteModal");
 
 function editPost() {
     let postId = document.querySelector("#post-id-input").value;
@@ -240,5 +241,30 @@ function editPost() {
         })
         .catch((error) => {
             showAlert(error.response.data.message, "danger");
+        });
+}
+
+function deletePostBtnClicked(id) {
+    document.querySelector("#delete-post-id-input").value = id;
+}
+
+function confirmDeletePost() {
+    let postId = document.querySelector("#delete-post-id-input").value;
+
+    const token = localStorage.getItem("token");
+    const headers = {
+        authorization: `Bearer ${token}`,
+    };
+    axios
+        .delete(`${baseURL}/posts/${postId}`, {
+            headers: headers,
+        })
+        .then((response) => {
+            deletePostModal.hide();
+            showAlert("Your post was deleted successfully", "success");
+            getAllPosts();
+        })
+        .catch((error) => {
+            console.log(error);
         });
 }
